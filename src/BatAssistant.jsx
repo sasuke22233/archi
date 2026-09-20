@@ -75,7 +75,7 @@ export default function BatAssistant(){
  const [open,setOpen]=useState(false),[q,setQ]=useState(''),[pages,setPages]=useState([]),
   [answer,setAnswer]=useState(''),[busy,setBusy]=useState(false),[sources,setSources]=useState([]);
  const formRef=useRef(null);
- useEffect(()=>{fetch('/course-material.txt').then(r=>r.text()).then(t=>setPages(t.split('\f'))).catch(()=>{})},[]);
+ useEffect(()=>{fetch(import.meta.env.BASE_URL+'course-material.txt').then(r=>r.text()).then(t=>setPages(t.split('\f'))).catch(()=>{})},[]);
  const refuse='Я — Bat assistant, помощник этого сайта. Отвечаю на вопросы по архитектуре, BIM, проектированию и материалам курса (вкладка «Материал»). Например: как работает арка, что такое BIM, как спланировать квартиру или какие бывают фундаменты.';
  const ask=async e=>{
   e.preventDefault();const question=q.trim();

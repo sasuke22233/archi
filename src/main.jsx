@@ -15,7 +15,7 @@ const materialPages=Array.from({length:912},(_,index)=>({
  page:index+1,
  text:`Загрузка страницы ${index+1} из учебного материала…`
 }));
-fetch('/course-material.txt').then(r=>r.text()).then(raw=>{
+fetch(import.meta.env.BASE_URL+'course-material.txt').then(r=>r.text()).then(raw=>{
  const pages=raw.split('\f').map((text,index)=>({page:index+1,text:text.replace(/^===PAGE\s+\d+===\s*/,'')}));
  materialPages.splice(0,materialPages.length,...pages);
  window.dispatchEvent(new Event('courseMaterialReady'));
